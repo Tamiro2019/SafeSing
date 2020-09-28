@@ -1,2 +1,4 @@
 # Ignore Data
 Data/
+
+.DS_Store
