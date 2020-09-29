@@ -4,31 +4,38 @@
         <title>Flask App</title>
         {{ dropzone.load() }}
         {{ dropzone.style('border: 2px dashed #0087F7; margin: 0%; min-height: 200px;') }}
+        <link href="../static/css/bootstrap.css" rel="stylesheet">
+        <link href="../static/css/jumbotron-narrow.css" rel="stylesheet">
     </head>
     <body>
-        <h1>Hello from Flask!</h1>
-        <!-- {{ dropzone.create(action_view='upload') }} -->
-
-            <form action="/upload" method="POST" enctype="multipart/form-data" >
-                <div class="form-group">
-                    <label>Select Audio File</label>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="audio" id="audio">
-                        <label class="custom-file-label" for="audio">Select Audio File...</label>
-                    </div>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>SafeSing</h1>
+            <!-- {{ dropzone.create(action_view='upload') }} -->
+                <div>
+                    <form action="/upload" method="POST" enctype="multipart/form-data" >
+                        <div class="form-group">
+                            <div class="container jumbotron">
+                                <label>Select Audio File</label>
+                                <input type="file" class="form-control" name="audio" id="audio">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            <div class="container">
-                {% with messages= get_flashed_messages() %}
-                    {% if messages %}
 
-                        {% for message in messages %}
-                            {{message}}
-                        {% endfor %}
+                <div>
+                    {% with messages= get_flashed_messages() %}
+                        {% if messages %}
 
-                    {% endif %}
-                {% endwith %}
+                            {% for message in messages %}
+                                {{message}}
+                            {% endfor %}
+
+                        {% endif %}
+                    {% endwith %}
+                </div>
             </div>
+        </div>
     </body>
 </html>
