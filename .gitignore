@@ -2,5 +2,6 @@
 Data/
 
 Flask_App/.idea/
+Flask_App/.idea/workspace.xml
 
 .DS_Store
