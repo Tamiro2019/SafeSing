@@ -1,4 +1,6 @@
 # Ignore Data
 Data/
 
+Flask_App/.idea/
+
 .DS_Store
