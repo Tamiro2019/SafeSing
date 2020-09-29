@@ -2,9 +2,10 @@ from flask import Flask, render_template, request, redirect, flash
 from flask_dropzone import Dropzone
 from werkzeug.utils import secure_filename
 #from flask_uploads import UploadSet, configure_uploads, patch_request_class
-import os
-
+from Models import model_prediction
+import numpy as np
 import librosa
+import os
 
 app = Flask(__name__)
 dropzone = Dropzone(app)
@@ -22,10 +23,6 @@ def allowed_audio(filename):
         return True
     else:
         return False
-
-def model(wave):
-
-    return 1
 
 # Routes
 
@@ -48,18 +45,17 @@ def upload():
                 filename = secure_filename(audio.filename)
 
                 audio.save(os.path.join(app.config["AUDIO_UPLOADS"], filename))
+                print('image saved!')
 
-            print('image saved!')
+            # load with librosa and run through model
+            wave = librosa.load(os.path.join(app.config["AUDIO_UPLOADS"], filename),sr=44100)[0]
+            wave_pred = model_prediction(wave)
 
-            wave = librosa.load(os.path.join(app.config["AUDIO_UPLOADS"], filename))
-
-            print(wave)
-
-            if model(wave) == 0:
+            if wave_pred == 0:
                 flash("Your phonation is breathy")
-            if model(wave) == 1:
+            if wave_pred == 1:
                 flash("Your phonation is balanced")
-            if model(wave) == 2:
+            if wave_pred == 2:
                 flash("Your phonation is pressed")
 
             return redirect(request.url)
