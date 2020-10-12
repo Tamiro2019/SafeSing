@@ -2,25 +2,37 @@
 <html>
     <head>
         <title>Flask App</title>
-        {{ dropzone.load() }}
-        {{ dropzone.style('border: 2px dashed #0087F7; margin: 0%; min-height: 200px;') }}
         <link href="../static/css/bootstrap.css" rel="stylesheet">
+        <link href="../static/css/bootstrap.min.css" rel="stylesheet">
         <link href="../static/css/jumbotron-narrow.css" rel="stylesheet">
     </head>
     <body>
         <div class="container">
             <div class="jumbotron">
-                <h1>SafeSing</h1>
-            <!-- {{ dropzone.create(action_view='upload') }} -->
+                <!-- <h1>SafeSing</h1>   -->
+                <h1><img src="../static/images/sslogo2.png" alt="SafeSing-Header" style="max-width: 80%; height: auto;margin-top:-50px;"></h1>
                 <div>
-                    <form action="/upload" method="POST" enctype="multipart/form-data" >
-                        <div class="form-group">
-                            <div class="container jumbotron">
-                                <label>Select Audio File</label>
-                                <input type="file" class="form-control" name="audio" id="audio">
+                    <form action="/" method="POST" enctype="multipart/form-data" >
+                        <!--div class="form-group"-->
+                            <div class="container jumbotron" style="margin-top:-50px;">
+                                <div class="card" style="width: auto;">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Welcome!</h5>
+                                    <p class="card-text" align=" justify">The SafeSing A.I. is ready to listen and give you feedback on your phonation. Upload an audio recording (.wav format) of you singing a scale or phrase acapella. For optimal results, find a quiet spot to sing and use a decent mic. Enjoy! </p>
+                                  </div>
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon">Your Voice Recording</span>
+                                  <input type="file" class="form-control" name="audio" id="audio" aria-describedby="basic-addon3">
+                                </div>
+                                <div style="margin-top:-30px;">
+                                    <button type="submit" class="btn btn-primary" style="margin-top:0px; margin-bottom:-120px;" >Analyze Your Voice</button>
+                                </div>
+                                <div style="margin-top:85px; margin-bottom:-120px;">
+                                    <button type="submit" class="btn" name="example" value="example">See Example</button>
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+                        <!--/div-->
                     </form>
                 </div>
 

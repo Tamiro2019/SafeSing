@@ -7,7 +7,7 @@ import numpy as np
 import librosa
 import os
 
-app = Flask(__name__)
+application = app = Flask(__name__)
 dropzone = Dropzone(app)
 
 # Config
@@ -26,7 +26,7 @@ def allowed_audio(filename):
 
 # Routes
 
-@app.route('/upload',methods=['GET','POST'])
+@app.route('/',methods=['GET','POST'])
 def upload():
     if request.method == 'POST':
         print('posted!')
