@@ -6,3 +6,6 @@ Flask_App/.idea/workspace.xml
 Flask_App/__pychache__/
 
 .DS_Store
+
+.*
+!/.gitignore
